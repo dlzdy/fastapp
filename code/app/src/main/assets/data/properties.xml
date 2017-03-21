@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<properties> 
+	<features> 
+		<feature name="Cache" value="io.dcloud.feature.pdr.CoreCacheFeatureImpl"/>
+		<feature name="Camera" value="io.dcloud.js.camera.CameraFeatureImpl"/>
+		<feature name="Console" value="io.dcloud.feature.pdr.LoggerFeatureImpl"/>
+		<feature name="Contacts" value="io.dcloud.feature.contacts.ContactsFeatureImpl"/>
+		<feature name="Device" value="io.dcloud.feature.device.DeviceFeatureImpl"/>
+		<feature name="File" value="io.dcloud.js.file.FileFeatureImpl"/>
+		<feature name="Gallery" value="io.dcloud.js.gallery.GalleryFeatureImpl"/>
+		<feature name="Invocation" value="io.dcloud.invocation.Invocation"/>
+		<feature name="Storage" value="io.dcloud.feature.pdr.NStorageFeatureImpl"/>
+		<feature name="Navigator" value="io.dcloud.feature.ui.navigator.NavigatorUIFeatureImpl"/>
+		<feature name="NativeObj" value="io.dcloud.feature.nativeObj.FeatureImpl"/>
+		<feature name="NativeUI" value="io.dcloud.feature.ui.nativeui.NativeUIFeatureImpl"/>
+		<feature name="Uploader" value="io.dcloud.net.UploadFeature"/>
+		<feature name="Runtime" value="io.dcloud.feature.pdr.RuntimeFeatureImpl"/>
+		<feature name="XMLHttpRequest" value="io.dcloud.net.XMLHttpRequestFeature"/>
+		<feature name="Zip" value="io.dcloud.feature.pdr.ZipFeature"/>
+		<feature name="Barcode" value="io.dcloud.feature.barcode.BarcodeFeatureImpl"/>
+		<feature name="UI" value="io.dcloud.feature.ui.UIFeatureImpl"> 
+			<module name="Navigator" value="io.dcloud.feature.ui.NavView"/> 
+		</feature>
+		<feature name="TvSdk" value="com.hljk365.app.iptv.tianjin.TvSdkFeatureImpl"/>
+	</features>
+	<services> 
+
+	</services>
+</properties>

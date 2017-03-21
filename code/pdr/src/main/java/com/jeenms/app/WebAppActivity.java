@@ -31,7 +31,11 @@ public class WebAppActivity extends AppCompatActivity {
         layout = new LinearLayout( this );    // 变量layout是该Activity的成员变量（private LinearLayout layout）
         layout.addView(webView);
         setContentView(layout);
-        webView.loadUrl("http://www.baidu.com");
+        //TODO 根据配置加载首页
+        //webView.loadUrl("http://www.baidu.com");
+        //String index = "http://www.baidu.com";
+        String index = "file:///android_asset/apps/hello-mui/index.html";
+        webView.loadUrl(index);
     }
     @Override
     protected void onResume() {
