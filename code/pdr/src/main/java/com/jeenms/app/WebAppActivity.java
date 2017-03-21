@@ -33,8 +33,9 @@ public class WebAppActivity extends AbstractActivity{
 
     public void initView() {
         WebViewImpl webView = new WebViewImpl(this);
-        webView.addJavascriptInterface(new JavaScriptWebView(this.getApplicationContext()), "plus");
-        //webView.addJavascriptInterface(new JavaScriptWebView(this.getApplicationContext()), "plus.runtime");
+        //TODO js 接口
+        webView.addJavascriptInterface(new JavaScriptWebView(this.getApplicationContext()), "webview");
+        webView.addJavascriptInterface(new JavaScriptRuntime(this.getApplicationContext()), "runtime");
         layout = new LinearLayout( this );    // 变量layout是该Activity的成员变量（private LinearLayout layout）
         layout.addView(webView);
         setContentView(layout);

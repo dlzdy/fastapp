@@ -11,6 +11,13 @@
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<script src="../js/mui.min.js"></script>
+		<script>
+			function(e){
+				var runtime = window.runtime;
+
+			}(window.plus)
+
+		</script>
 
 	</head>
 	<body>
@@ -20,7 +27,7 @@
 		</header>
 		<div class="mui-content">
 			<a href="#" onclick="javascript:alert()">alert</a><p>
-			<a href="#" onclick="javascript:plus.test()">webview test</a><p>
+			<a href="#" onclick="javascript:plus.webview.test()">webview test</a><p>
 			<a href="#" onclick="javascript:plus.runtime.test()">runtime test</a><p>
 		</div>
 
