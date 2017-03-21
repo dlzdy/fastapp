@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Message;
+import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
@@ -74,20 +76,6 @@ public class WebViewUtils {
 		}
 	}
 
-	/**
-	 * 
-	 * @author zhangdy
-	 *
-	 */
-	private class MyWebViewClient extends WebViewClient {
-
-		@Override
-		public boolean shouldOverrideUrlLoading(WebView view, String urls) {
-			view.loadUrl(urls); // load url in current WebView
-			return true;
-		}
-
-	}
 
 	private class MyWebChromeClient extends WebChromeClient {
 		@Override
