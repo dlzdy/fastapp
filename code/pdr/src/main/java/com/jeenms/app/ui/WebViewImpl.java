@@ -6,6 +6,10 @@ import android.os.Build;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.jeenms.app.WebAppActivity;
+import com.jeenms.app.plugin.RuntimeFeatureImpl;
+import com.jeenms.app.plugin.WebViewFeatureImpl;
+
 /**
  * Created by zhangdy on 2017/3/21.
  */
@@ -16,6 +20,9 @@ public class WebViewImpl extends WebView{
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         this.setWebViewClient(new WebViewClientImpl());
         this.setWebChromeClient(new WebChromeClientImpl());
+        //TODO js 接口
+        addJavascriptInterface(new WebViewFeatureImpl(this), "webview");
+        addJavascriptInterface(new RuntimeFeatureImpl(this), "runtime");
     }
     public void initSettings() {
         //允许跨域

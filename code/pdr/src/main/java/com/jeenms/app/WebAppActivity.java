@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jeenms.app.commons.AbstractActivity;
+import com.jeenms.app.plugin.RuntimeFeatureImpl;
 import com.jeenms.app.ui.WebViewImpl;
 import com.jeenms.app.utils.WebViewUtils;
 
@@ -32,10 +33,7 @@ public class WebAppActivity extends AbstractActivity{
     }
 
     public void initView() {
-        WebViewImpl webView = new WebViewImpl(this);
-        //TODO js 接口
-        webView.addJavascriptInterface(new JavaScriptWebView(this.getApplicationContext()), "webview");
-        webView.addJavascriptInterface(new JavaScriptRuntime(this.getApplicationContext()), "runtime");
+        webView = new WebViewImpl(this);
         layout = new LinearLayout( this );    // 变量layout是该Activity的成员变量（private LinearLayout layout）
         layout.addView(webView);
         setContentView(layout);
