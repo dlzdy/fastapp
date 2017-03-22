@@ -13,49 +13,26 @@
 		<script src="../js/mui.min.js"></script>
 		<!--<script src="../js/testPlus.js"></script>-->
 		<script>
-//			(function() { 
-//			alert('water'); 
-//			})(); 
 			
-//			(function(o) { 
-//			alert(o); 
-//			})('water'); 
-
-//			var plus2 = function() { 
-//
-//			}; 
-//			window.plus2.webview = window.webview;
-//			window.plus2.runtime = window.runtime;	
-//			window.plus2.ttt = "33";
-//			var plus2 = function(){
-//				var webview = window.webview;
-//				var runtime = window.runtime;	
-//				var ttt = "33";
-//			}
-//			var webview333 = window.webview;
-//			
-//			function(e) {
-//			    var e = e,
-//			    e.runtime = {
-//			        quit: function() {
-//			            windows.plus
-//			        },
-//			    }
-//			} (window.plus2)		
-			
-			window.plus2=function(){
+			var plus = function(){
+				//ttt = "33";
 			};
-
+			
+			//runtime
 			(function(e) {
-			    var e = e;
-			    e.ttt = "33";
-				e.webview = window.webview;
-				e.runtime = window.runtime;	
-			}) (window.plus2)
+			    var plus = e;
+				e.ttt = "33";
+				plus.runtime = window.runtime;	
+			}) (plus),
+
+			//webview
+			(function(e) {
+			    var plus = e;
+				plus.webview = window.webview;
+			})(plus)
 			
 			function test1(){
-				//console.log(window.plus2)
-				alert(window.plus2.ttt);
+				alert(plus.ttt);
 			}
 		</script>
 
@@ -68,19 +45,15 @@
 		<div class="mui-content">
 			<p>
 			<p>
-			<a href="#" onclick="test1()">alert plus2.ttt</a>
+			<a href="#" onclick="test1()">alert plus.ttt</a>
 			<p>
 			<p>
-			<a href="#" onclick="javascript:webview333.test()">webview333 test</a>
 			<p>
 			<p>
-			<a href="#" onclick="javascript:window.plus2.test()">window.webview test</a>
+			<a href="#" onclick="javascript:window.plus.webview.test()">plus webview test</a>
 			<p>
 			<p>
-			<a href="#" onclick="javascript:window.plus2.webview.test()">plus2 webview test</a>
-			<p>
-			<p>
-			<a href="#" onclick="javascript:window.plus2.runtime.test()">plus2 runtime test</a>
+			<a href="#" onclick="javascript:window.plus.runtime.test()">plus runtime test</a>
 			<p>
 			<p>
 		</div>
