@@ -3,7 +3,7 @@ package com.jeenms.app.commons;
 /**
  *
  */
-public interface IView {
+public interface IActivity {
     /**
      * 初始化视图
      *

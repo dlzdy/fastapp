@@ -20,7 +20,7 @@ public class WebViewImpl extends WebView{
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         this.setWebViewClient(new WebViewClientImpl());
         this.setWebChromeClient(new WebChromeClientImpl());
-        //TODO js 接口
+        //TODO js 接口,使用反射机制，读取配置文件
         addJavascriptInterface(new WebViewFeatureImpl(this), "webview");
         addJavascriptInterface(new RuntimeFeatureImpl(this), "runtime");
     }
