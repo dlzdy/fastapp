@@ -17,11 +17,9 @@ function(e) {
 } (window.plus),
 function(e) {
     var e = e,
-    t = window.plus.bridge,
-    n = "Runtime";
     e.runtime = {
         quit: function() {
-            windows.plus
+            alert("quit");
         },
     }
 } (window.plus),

@@ -11,12 +11,52 @@
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<script src="../js/mui.min.js"></script>
+		<!--<script src="../js/testPlus.js"></script>-->
 		<script>
-			function(e){
-				var runtime = window.runtime;
+//			(function() { 
+//			alert('water'); 
+//			})(); 
+			
+//			(function(o) { 
+//			alert(o); 
+//			})('water'); 
 
-			}(window.plus)
+//			var plus2 = function() { 
+//
+//			}; 
+//			window.plus2.webview = window.webview;
+//			window.plus2.runtime = window.runtime;	
+//			window.plus2.ttt = "33";
+//			var plus2 = function(){
+//				var webview = window.webview;
+//				var runtime = window.runtime;	
+//				var ttt = "33";
+//			}
+//			var webview333 = window.webview;
+//			
+//			function(e) {
+//			    var e = e,
+//			    e.runtime = {
+//			        quit: function() {
+//			            windows.plus
+//			        },
+//			    }
+//			} (window.plus2)		
+			
+			window.plus2=function(){
+			};
 
+			(function(e) {
+			    var e = e;
+			    e.ttt = "33";
+				e.webview = window.webview;
+				e.runtime = window.runtime;	
+			}) (window.plus2)
+			
+			function test1(){
+				//console.log(window.plus2)
+				alert(window.plus2.ttt);
+			}
 		</script>
 
 	</head>
@@ -26,9 +66,23 @@
 			<h1 class="mui-title">mytest</h1>
 		</header>
 		<div class="mui-content">
-			<a href="#" onclick="javascript:alert()">alert</a><p>
-			<a href="#" onclick="javascript:plus.webview.test()">webview test</a><p>
-			<a href="#" onclick="javascript:plus.runtime.test()">runtime test</a><p>
+			<p>
+			<p>
+			<a href="#" onclick="test1()">alert plus2.ttt</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:webview333.test()">webview333 test</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:window.plus2.test()">window.webview test</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:window.plus2.webview.test()">plus2 webview test</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:window.plus2.runtime.test()">plus2 runtime test</a>
+			<p>
+			<p>
 		</div>
 
 	</body>
