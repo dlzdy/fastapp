@@ -1,19 +1,22 @@
 package com.jeenms.app.ui;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.jeenms.app.WebAppActivity;
+import com.jeenms.app.commons.IWebview;
+import com.jeenms.app.plugin.NativeUIFeatureImpl;
 import com.jeenms.app.plugin.RuntimeFeatureImpl;
 import com.jeenms.app.plugin.WebViewFeatureImpl;
 
 /**
  * Created by zhangdy on 2017/3/21.
  */
-public class WebViewImpl extends WebView{
+public class WebViewImpl extends WebView  implements IWebview {
     public WebViewImpl(Context context) {
         super(context);
         initSettings();
@@ -23,7 +26,27 @@ public class WebViewImpl extends WebView{
         //TODO js 接口,使用反射机制，读取配置文件
         addJavascriptInterface(new WebViewFeatureImpl(this), "webview");
         addJavascriptInterface(new RuntimeFeatureImpl(this), "runtime");
+        addJavascriptInterface(new NativeUIFeatureImpl(this), "nativeUI");
+
+        plusReady();
+
     }
+
+    /**
+     * 可以调用plus对象了
+     */
+    private void plusReady() {
+        Handler mHandler = new Handler();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                //调用JS中的 函数，当然也可以不传参
+                loadUrl("javascript:plusReady()");
+            }
+        });
+    }
+
+
     public void initSettings() {
         //允许跨域
         enableCrossDomain();
@@ -76,4 +99,8 @@ public class WebViewImpl extends WebView{
         }
     }
 
+    @Override
+    public Activity getActivity() {
+        return null;
+    }
 }

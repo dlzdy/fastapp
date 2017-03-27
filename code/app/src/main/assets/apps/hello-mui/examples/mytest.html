@@ -23,16 +23,19 @@
 			    var plus = e;
 				e.ttt = "33";
 				plus.runtime = window.runtime;	
+				plus.webview = window.webview;
+				plus.nativeUI = window.nativeUI;
 			}) (plus),
 
-			//webview
-			(function(e) {
-			    var plus = e;
-				plus.webview = window.webview;
-			})(plus)
 			
 			function test1(){
 				mui.alert(plus.ttt);
+			}
+			function plusAlert(){
+				plus.nativeUI.alert("欢迎使用mui", null, "警告信息", null);
+			}
+			function plusConfirm(){
+				plus.nativeUI.confirm("确认删除吗", null, "确认", "确认,取消,应用");
 			}
 		</script>
 
@@ -54,6 +57,12 @@
 			<p>
 			<p>
 			<a href="#" onclick="javascript:window.plus.runtime.test()">plus runtime test</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:plusAlert();">plus alert</a>
+			<p>
+			<p>
+			<a href="#" onclick="javascript:plusConfirm();">plus confirm</a>
 			<p>
 			<p>
 		</div>

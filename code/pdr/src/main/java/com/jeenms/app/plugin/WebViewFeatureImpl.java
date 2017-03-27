@@ -14,8 +14,7 @@ import com.jeenms.app.commons.AbstractFeature;
 public class WebViewFeatureImpl extends AbstractFeature {
 
     public WebViewFeatureImpl(WebView webView) {
-        this.webView = webView;
-        this.context = webView.getContext();
+        super(webView);
     }
 
 }

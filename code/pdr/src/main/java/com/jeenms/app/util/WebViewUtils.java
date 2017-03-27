@@ -1,4 +1,4 @@
-package com.jeenms.app.utils;
+package com.jeenms.app.util;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Message;
-import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;

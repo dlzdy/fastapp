@@ -12,21 +12,21 @@ import android.webkit.WebView;
  */
 
 public class WebChromeClientImpl extends WebChromeClient {
-    @Override
-    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setTitle("Alert");
-        builder.setMessage(message);
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                result.confirm();
-            }
-        });
-        builder.setCancelable(false);
-        builder.create().show();
-        return true;
-    }
+//    @Override
+//    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+//        builder.setTitle("Alert");
+//        builder.setMessage(message);
+//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                result.confirm();
+//            }
+//        });
+//        builder.setCancelable(false);
+//        builder.create().show();
+//        return true;
+//    }
     //设置响应js 的Confirm()函数
     @Override
     public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {

@@ -8,9 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jeenms.app.commons.AbstractActivity;
-import com.jeenms.app.plugin.RuntimeFeatureImpl;
 import com.jeenms.app.ui.WebViewImpl;
-import com.jeenms.app.utils.WebViewUtils;
 
 public class WebAppActivity extends AbstractActivity{
 

@@ -12,6 +12,18 @@ import android.widget.Toast;
 public class AbstractFeature implements IFeature {
     protected Context context;
     protected WebView webView;
+    public AbstractFeature(WebView webView) {
+        this.webView = webView;
+        this.context = webView.getContext();
+    }
+
+    public WebView getWebView() {
+        return webView;
+    }
+
+    public Context getContext() {
+        return context;
+    }
 
     @JavascriptInterface
     @Override
