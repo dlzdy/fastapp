@@ -14,6 +14,16 @@
 				margin-top: -1px;
 			}
 		</style>
+		<script>
+			function plusready(){
+				alert("plusready");
+			}
+			if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener("plusready",plusready,false);
+			}
+		</script>
 	</head>
 
 	<body>

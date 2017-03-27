@@ -2,6 +2,7 @@ package com.jeenms.app;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
@@ -38,35 +39,11 @@ public class WebAppActivity extends AbstractActivity{
         //TODO 根据配置加载首页
         //webView.loadUrl("http://www.baidu.com");
         //String index = "http://www.baidu.com";
-        String index = "file:///android_asset/apps/hello-mui/index.html";
+        //String index = "file:///android_asset/apps/hello-mui/index.html";
+        String index = "file:///android_asset/apps/hello-mui/examples/mytest.html";
         webView.loadUrl(index);
     }
 
-    private class JavaScriptWebView {
-        private Context context;
-
-        public JavaScriptWebView(Context context) {
-            this.context = context;
-        }
-
-        @JavascriptInterface
-        public void test() {
-            Toast.makeText(context, "webview test", Toast.LENGTH_SHORT).show();
-        }
-    }
-    private class JavaScriptRuntime {
-        private Context context;
-
-        public JavaScriptRuntime(Context context) {
-            this.context = context;
-        }
-
-        @JavascriptInterface
-        public void test() {
-            Toast.makeText(context, "runtime test", Toast.LENGTH_SHORT).show();
-        }
-
-    }
     /**
      * 返回按键处理
      */

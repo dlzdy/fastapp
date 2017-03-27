@@ -27,24 +27,9 @@ public class WebViewImpl extends WebView  implements IWebview {
         addJavascriptInterface(new WebViewFeatureImpl(this), "webview");
         addJavascriptInterface(new RuntimeFeatureImpl(this), "runtime");
         addJavascriptInterface(new NativeUIFeatureImpl(this), "nativeUI");
-
-        plusReady();
-
     }
 
-    /**
-     * 可以调用plus对象了
-     */
-    private void plusReady() {
-        Handler mHandler = new Handler();
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                //调用JS中的 函数，当然也可以不传参
-                loadUrl("javascript:plusReady()");
-            }
-        });
-    }
+
 
 
     public void initSettings() {

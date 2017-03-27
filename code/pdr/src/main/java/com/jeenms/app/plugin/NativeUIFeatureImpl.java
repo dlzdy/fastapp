@@ -129,7 +129,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, btnNegativeCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, btnNegativeCaption , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, btnNegativeCaption , Toast.LENGTH_SHORT).show();
             }
         });
         //第三个按钮
@@ -137,7 +137,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, btnNeutralCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, btnNeutralCaption , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, btnNeutralCaption , Toast.LENGTH_SHORT).show();
             }
         });
 
