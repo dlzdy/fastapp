@@ -10,19 +10,18 @@
 
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
-		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.js"></script>
 		<!--<script src="../js/testPlus.js"></script>-->
 		<script>
 			
 			var plus = function(){
-				//ttt = "33";
+
 			};
 			
 			//runtime
 			(function(e) {
 			    var plus = e;
-				e.ttt = "33";
-				plus.runtime = window.runtime;	
+				plus.runtime = window.runtime;
 				plus.webview = window.webview;
 				plus.nativeUI = window.nativeUI;
 			}) (plus),
@@ -40,8 +39,7 @@
 			/*
 			function plusready(){
 				alert("plusready55");
-			}*/
-			/*
+			}
 			document.addEventListener("plusready", function() {
 				plusready();
 			}, false);

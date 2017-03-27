@@ -17,6 +17,9 @@ import com.jeenms.app.plugin.WebViewFeatureImpl;
  * Created by zhangdy on 2017/3/21.
  */
 public class WebViewImpl extends WebView  implements IWebview {
+    String mUserAgent = null;
+    static final String UserAgentExtInfo = " Html5Plus/1.0";
+
     public WebViewImpl(Context context) {
         super(context);
         initSettings();
@@ -48,9 +51,9 @@ public class WebViewImpl extends WebView  implements IWebview {
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        // settings.setUserAgentString(
-        // "User-Agent:Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us)
-        // AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50");
+
+        mUserAgent = settings.getUserAgentString();
+        settings.setUserAgentString(mUserAgent + " Html5Plus/1.0");
 
         // We don't save any form data in the application
         settings.setSaveFormData(false);

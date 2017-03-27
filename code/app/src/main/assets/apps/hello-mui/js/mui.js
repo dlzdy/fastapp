@@ -480,6 +480,7 @@ var mui = (function(document, undefined) {
 			},
 			function() { //android
 				var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
+				alert("android = " + android);
 				if (android) {
 					this.os.android = true;
 					this.os.version = android[2];
@@ -7249,10 +7250,12 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 btnValue = null;
             }
         }
+        alert("createAlert $.os.plus=" + $.os.plus);
         if (!$.os.plus || type === 'div') {
             return createPopup(createInner(message, title || '提示') + createButtons([btnValue || '确定']), callback);
         }
-        return plus.nativeUI.alert(message, callback, title || '提示', btnValue || '确定');
+        return plus.nativeUI.alert("欢迎使用mui", null, "警告信息", null);
+       // return plus.nativeUI.alert(message, callback, title || '提示', btnValue || '确定');
     };
     var createConfirm = function(message, title, btnArray, callback, type) {
         if (typeof message === 'undefined') {
