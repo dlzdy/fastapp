@@ -14,7 +14,6 @@ public class WebViewClientImpl extends WebViewClient {
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
         view.loadUrl(url);
-
         return true;
     }
 
@@ -23,18 +22,18 @@ public class WebViewClientImpl extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-        plusReady(view);
+        //通知webview plus is ready
+        plusready(view);
     }
 
     /**
      * 可以调用plus对象了
      */
-    private void plusReady(final WebView view) {
+    private void plusready(final WebView view) {
         Handler mHandler = new Handler();
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                //调用JS中的 函数，当然也可以不传参
                 view.loadUrl("javascript:plusready()");
             }
         });
