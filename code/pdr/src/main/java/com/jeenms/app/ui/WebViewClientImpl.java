@@ -30,6 +30,7 @@ public class WebViewClientImpl extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
+        //执行all.js初始化plus等变量
         //通知webview plus is ready
         onPlusReadyEvent(view);
     }
