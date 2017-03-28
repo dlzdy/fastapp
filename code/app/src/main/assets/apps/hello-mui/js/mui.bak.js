@@ -479,8 +479,7 @@ var mui = (function(document, undefined) {
 				return false;
 			},
 			function() { //android
-				var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);//Android 4.2.2
-				//alert("483 android = " + android);
+				var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
 				if (android) {
 					this.os.android = true;
 					this.os.version = android[2];
@@ -2114,7 +2113,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	 * @returns {_L6.$}
 	 */
 	$.plusReady = function(callback) {
-		//alert("2117 plus ready , plus=" + window.plus);//undefined
 		if (window.plus) {
 			setTimeout(function() { //解决callback与plusready事件的执行时机问题(典型案例:showWaiting,closeWaiting)
 				callback();
@@ -7251,11 +7249,9 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 btnValue = null;
             }
         }
-        alert("createAlert(7253) $.os.plus=" + $.os.plus);
         if (!$.os.plus || type === 'div') {
             return createPopup(createInner(message, title || '提示') + createButtons([btnValue || '确定']), callback);
         }
-       // return window.nativeUI.alert(message, callback, title || '提示', btnValue || '确定');//ok
         return plus.nativeUI.alert(message, callback, title || '提示', btnValue || '确定');
     };
     var createConfirm = function(message, title, btnArray, callback, type) {
