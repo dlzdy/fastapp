@@ -17,4 +17,8 @@ public class WebViewFeatureImpl extends AbstractFeature {
         super(webView);
     }
 
+    @JavascriptInterface
+    public void  currentWebview(){
+
+    }
 }

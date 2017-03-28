@@ -31,13 +31,13 @@ public class WebViewClientImpl extends WebViewClient {
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
         //通知webview plus is ready
-        plusready(view);
+        onPlusReadyEvent(view);
     }
 
     /**
      * 可以调用plus对象了
      */
-    private void plusready(final WebView view) {
+    private void onPlusReadyEvent(final WebView view) {
         final StringBuffer js_fun_plusready =  new StringBuffer();
         js_fun_plusready.append("(function(){");//begin js
         js_fun_plusready.append("var event = document.createEvent('HTMLEvents'); ");

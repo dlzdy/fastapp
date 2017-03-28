@@ -1,18 +1,14 @@
 package com.jeenms.app.plugin;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
-import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.jeenms.app.commons.AbstractFeature;
-import com.jeenms.app.util.DialogUtil;
 import com.jeenms.app.util.JSONUtil;
-import com.jeenms.app.util.RuningAcitvityUtil;
 import com.jeenms.app.util.StringUtils;
 
 import org.json.JSONArray;
@@ -69,7 +65,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
             buttonCapture = "确定";
         }
 
-        aaa(message, callback,title,buttonCapture);
+        commonDialog(message, callback,title,buttonCapture);
 //        //title
 //        builder.setTitle(title);
 //
@@ -98,11 +94,11 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         if (StringUtils.isEmpty(buttonCapture)) {//左-是，右-否
             buttonCapture = "是,否";
         }
-        return aaa(message, callback,title,buttonCapture);
+        return commonDialog(message, callback,title,buttonCapture);
     }
 
 
-    private boolean aaa(String message,String callback, String title, String buttonCapture) {
+    private boolean commonDialog(String message, String callback, String title, String buttonCapture) {
         //TODO　topActivity
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(message);
