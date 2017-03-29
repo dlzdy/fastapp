@@ -7276,9 +7276,9 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
         if (!$.os.plus || type === 'div') {
             return createPopup(createInner(message, title || '提示') + createButtons(btnArray || ['取消', '确认']), callback);
         }
-		alert("---->" + btnArray || ['取消', '确认']);
-        return plus.nativeUI.confirm(message, callback, title, "取消, 确认");
-        //return plus.nativeUI.confirm(message, callback, title, btnArray || ['取消', '确认']);
+		//alert("---->" + btnArray || ['取消', '确认']);
+        //return plus.nativeUI.confirm(message, callback, title, "取消, 确认");
+        return plus.nativeUI.confirm(message, callback, title, btnArray || ['取消', '确认']);
     };
     var createPrompt = function(message, placeholder, title, btnArray, callback, type) {
         if (typeof message === 'undefined') {

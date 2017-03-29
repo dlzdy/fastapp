@@ -70,13 +70,13 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         commonDialog(message, callback,title,buttonCapture);
     }
     @JavascriptInterface
-    public boolean confirm(String message,String callback, String title, Object buttonCapture) {
+    public boolean confirm(String message,String callback, String title, String buttonCapture) {
         //title
         if (JSUtils.isEmpty(title)) {
             title = "确认";
         }
         //button
-        if (JSUtils.isEmpty(buttonCapture + "")) {//左-是，右-否
+        if (JSUtils.isEmpty(buttonCapture)) {//左-是，右-否
             //buttonCapture = "否,是";
             buttonCapture = "取消,确定";
         }
@@ -164,10 +164,58 @@ public class NativeUIFeatureImpl extends AbstractFeature {
      可选值为"top"、"center"、"bottom"，分别为垂直居顶、居中、居底，未设置时默认值为"bottom"。
      */
     @JavascriptInterface
-    public void toast(String message, JSONObject toastOptions){
+    public void toast(String message, String toastOptions){
         //TODO 解析toastOptions
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(getContext(), message, duration);
         toast.show();
+    }
+
+    private class ToastOptions{
+        String icon;
+        String style;
+        String duration;
+        String align;
+        String verticalAlign;
+
+        public String getIcon() {
+            return icon;
+        }
+
+        public void setIcon(String icon) {
+            this.icon = icon;
+        }
+
+        public String getStyle() {
+            return style;
+        }
+
+        public void setStyle(String style) {
+            this.style = style;
+        }
+
+        public String getDuration() {
+            return duration;
+        }
+
+        public void setDuration(String duration) {
+            this.duration = duration;
+        }
+
+        public String getAlign() {
+            return align;
+        }
+
+        public void setAlign(String align) {
+            this.align = align;
+        }
+
+        public String getVerticalAlign() {
+            return verticalAlign;
+        }
+
+        public void setVerticalAlign(String verticalAlign) {
+            this.verticalAlign = verticalAlign;
+        }
     }
 }
