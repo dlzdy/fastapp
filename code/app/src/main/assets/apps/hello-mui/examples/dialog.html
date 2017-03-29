@@ -40,24 +40,29 @@
 				<div id="info"></div>
 			</div>
 		</div>
-        <script>
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/* */
 			var plus = function(){};
 			(function(e) {
 			    var plus = e;
 				plus.runtime = window.runtime;
 				plus.webview = window.webview;
 				plus.nativeUI = window.nativeUI;
-				plus.key = window.runtime;
 			}) (plus)
-        </script>
-		<script src="../js/mui.js"></script>
-		<script type="text/javascript" charset="utf-8">
 
-
-			//document.addEventListener("plusready", function() {
-			//    alert("plus Ready");
-			//}, false);
-			
+			/*
+			function plusready55(){
+				alert("plusready55");
+				plus.runtime = window.runtime;
+				plus.webview = window.webview;
+				plus.nativeUI = window.nativeUI;
+			}
+			document.addEventListener("plusready", function() {
+				plusready55();
+			}, false);
+			*/
+			/* */
 			//mui初始化
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
@@ -92,7 +97,7 @@
 			document.getElementById("toastBtn").addEventListener('tap', function() {
 				mui.toast('欢迎体验Hello MUI');
 			});
-			/**/
+
 		</script>
 	</body>
 

@@ -1,6 +1,7 @@
 package com.jeenms.app.plugin;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
@@ -13,6 +14,7 @@ import com.jeenms.app.util.JSUtils;
 import com.jeenms.app.util.StringUtils;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * 原生的UI  参考dcloud.NativeUIFeatureImpl
@@ -145,5 +147,27 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         return true;
     }
 
+    /**
+     * http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.ToastOptions
+     * @param toastOptions
+     icon: (String 类型 )提示消息框上显示的图标
+     style: (String 类型 )提示消息框上显示的样式
+     可取值： "block"表示图标与文字分两行显示，上面显示图标，下面显示文字； "inline"表示图标与文字在同一行显示，左边显示图标，右边显示文字。 默认值为"block"。
 
+     duration: (String 类型 )提示消息框显示的时间
+     可选值为"long"、"short"，值为"long"时显示时间约为3.5s，值为"short"时显示时间约为2s，未设置时默认值为"short"。
+
+     align: (String 类型 )提示消息框在屏幕中的水平位置
+     可选值为"left"、"center"、"right"，分别为水平居左、居中、居右，未设置时默认值为"center"。
+
+     verticalAlign: (String 类型 )提示消息在屏幕中的垂直位置
+     可选值为"top"、"center"、"bottom"，分别为垂直居顶、居中、居底，未设置时默认值为"bottom"。
+     */
+    @JavascriptInterface
+    public void toast(String message, JSONObject toastOptions){
+        //TODO 解析toastOptions
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getContext(), message, duration);
+        toast.show();
+    }
 }
