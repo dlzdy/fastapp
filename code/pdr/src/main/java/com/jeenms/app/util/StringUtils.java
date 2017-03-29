@@ -49,4 +49,8 @@ public class StringUtils {
         }
         return true;
     }
+
+    public static  boolean isUndefined(final CharSequence cs){
+        return ("undefined".equals(cs));
+    }
 }

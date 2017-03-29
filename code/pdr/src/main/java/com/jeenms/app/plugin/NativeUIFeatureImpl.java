@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.jeenms.app.commons.AbstractFeature;
 import com.jeenms.app.util.JSONUtil;
+import com.jeenms.app.util.JSUtils;
 import com.jeenms.app.util.StringUtils;
 
 import org.json.JSONArray;
@@ -57,47 +58,37 @@ public class NativeUIFeatureImpl extends AbstractFeature {
     @JavascriptInterface
     public void alert(String message, String callback, String title, String buttonCapture) {
         //title
-        if (StringUtils.isEmpty(title)) {
+        if (JSUtils.isEmpty(title)) {
             title = "提示";
         }
         //button
-        if (StringUtils.isEmpty(buttonCapture)) {
+        if (JSUtils.isEmpty(buttonCapture)) {
             buttonCapture = "确定";
         }
-
         commonDialog(message, callback,title,buttonCapture);
-//        //title
-//        builder.setTitle(title);
-//
-//        //button
-//        JSONArray jsonButton;
-//        if (StringUtils.isEmpty(buttonCapture)) {
-//            jsonButton = JSONUtil.createJSONArray("确定");
-//        }else{
-//            jsonButton = JSONUtil.createJSONArray(buttonCapture);
-//        }
-//        String btnOk =  JSONUtil.getString(jsonButton, 0);
-//
-//        builder.setPositiveButton(btnOk, null);
-//        AlertDialog dialog = builder.create();
-//        dialog.setCanceledOnTouchOutside(false);
-//        dialog.show();
     }
     @JavascriptInterface
-    public boolean confirm(String message,String callback, String title,String buttonCapture) {
+    public boolean confirm(String message,String callback, String title, Object buttonCapture) {
         //title
-        if (StringUtils.isEmpty(title)) {
+        if (JSUtils.isEmpty(title)) {
             title = "确认";
         }
         //button
-        JSONArray jsonButton = null;
-        if (StringUtils.isEmpty(buttonCapture)) {//左-是，右-否
-            buttonCapture = "是,否";
+        if (JSUtils.isEmpty(buttonCapture + "")) {//左-是，右-否
+            //buttonCapture = "否,是";
+            buttonCapture = "取消,确定";
         }
-        return commonDialog(message, callback,title,buttonCapture);
+        return commonDialog(message, callback,title,buttonCapture + "");
     }
 
-
+    /**
+     * 消息框
+     * void plus.nativeUI.alert( message, alertCB, title, buttonCapture );
+     message: ( String ) 必选 提示对话框上显示的内容
+     alertCB: ( AlertCallback ) 可选 提示对话框上关闭后的回调函数
+     title: ( String ) 可选 提示对话框上显示的标题
+     buttonCapture: ( String ) 必选 提示对话框上按钮显示的内容 ["确定"]
+     */
     private boolean commonDialog(String message, String callback, String title, String buttonCapture) {
         //TODO　topActivity
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -117,7 +108,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, btnPostiveCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, btnPostiveCaption , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, btnPostiveCaption , Toast.LENGTH_SHORT).show();
             }
         });
         //第二个按钮

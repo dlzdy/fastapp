@@ -2737,10 +2737,10 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	//默认监听
 	$.plusReady(function() {
 		if ($.options.keyEventBind.backbutton) {
-			plus.key.addEventListener('backbutton', __back, false);
+			//plus.key.addEventListener('backbutton', __back, false);
 		}
 		if ($.options.keyEventBind.menubutton) {
-			plus.key.addEventListener('menubutton', __menu, false);
+			//plus.key.addEventListener('menubutton', __menu, false);
 		}
 	});
 	//处理按键监听事件
@@ -7251,7 +7251,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 btnValue = null;
             }
         }
-        alert("createAlert(7253) $.os.plus=" + $.os.plus);
+        //alert("createAlert(7253) $.os.plus=" + $.os.plus);
         if (!$.os.plus || type === 'div') {
             return createPopup(createInner(message, title || '提示') + createButtons([btnValue || '确定']), callback);
         }
@@ -7276,7 +7276,9 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
         if (!$.os.plus || type === 'div') {
             return createPopup(createInner(message, title || '提示') + createButtons(btnArray || ['取消', '确认']), callback);
         }
-        return plus.nativeUI.confirm(message, callback, title, btnArray || ['取消', '确认']);
+		alert("---->" + btnArray || ['取消', '确认']);
+        return plus.nativeUI.confirm(message, callback, title, "取消, 确认");
+        //return plus.nativeUI.confirm(message, callback, title, btnArray || ['取消', '确认']);
     };
     var createPrompt = function(message, placeholder, title, btnArray, callback, type) {
         if (typeof message === 'undefined') {
