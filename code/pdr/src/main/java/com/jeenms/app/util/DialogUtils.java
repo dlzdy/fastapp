@@ -9,7 +9,7 @@ import android.os.Build;
  * Created by zhangdy on 2017/3/27.
  */
 
-public class DialogUtil {
+public class DialogUtils {
 
     public static AlertDialog.Builder initDialog(Context context) {
         AlertDialog.Builder builder = null;

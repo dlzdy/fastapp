@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by zhangdy on 2017/3/27.
  */
 
-public class JSONUtil {
+public class JsonUtils {
 
     /**
      * "abc"-->[abc]

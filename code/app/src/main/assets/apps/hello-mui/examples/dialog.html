@@ -42,25 +42,25 @@
 		</div>
 		<script src="../js/mui.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			/* */
-			var plus = function(){};
-			(function(e) {
-			    var plus = e;
-				plus.runtime = window.runtime;
-				plus.webview = window.webview;
-				
-				//重新定义nativeUI
-				var _nativeUI= {
-			        confirm: function (message, callback, title, btnArray){
-			            return window.nativeUI.confirm(message, callback, title, JSON.stringify(btnArray));
-			        },
-			        toast: function (message,options){
-			            return window.nativeUI.toast(message,JSON.stringify(options));
-			        }
-			    };
-			    plus.nativeUI = _nativeUI;			
-
-			}) (plus)
+//			/* */
+//			var plus = function(){};
+//			(function(e) {
+//			    var plus = e;
+//				plus.runtime = window.runtime;
+//				plus.webview = window.webview;
+//				
+//				//重新定义nativeUI
+//				var _nativeUI= {
+//			        confirm: function (message, callback, title, btnArray){
+//			            return window.nativeUI.confirm(message, callback, title, JSON.stringify(btnArray));
+//			        },
+//			        toast: function (message,options){
+//			            return window.nativeUI.toast(message,JSON.stringify(options));
+//			        }
+//			    };
+//			    plus.nativeUI = _nativeUI;			
+//
+//			}) (plus)
 			/*
 			function plusready55(){
 				alert("plusready55");

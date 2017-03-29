@@ -12,7 +12,7 @@ import java.util.List;
  * Created by zhangdy on 2017/3/27.
  */
 
-public class RuningAcitvityUtil {
+public class RuningAcitvityUtils {
     /**
      * <activity.getComponentName().getClassName(), activity>
      */
