@@ -8,8 +8,8 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.jeenms.app.commons.AbstractFeature;
-import com.jeenms.app.util.JsonUtils;
-import com.jeenms.app.util.JsUtils;
+import com.jeenms.app.util.JSONUtils;
+import com.jeenms.app.util.JSUtils;
 import com.jeenms.app.util.StringUtils;
 
 import org.json.JSONArray;
@@ -58,11 +58,11 @@ public class NativeUIFeatureImpl extends AbstractFeature {
     @JavascriptInterface
     public void alert(String message, String callback, String title, String buttonCapture) {
         //title
-        if (JsUtils.isEmpty(title)) {
+        if (JSUtils.isEmpty(title)) {
             title = "提示";
         }
         //button
-        if (JsUtils.isEmpty(buttonCapture)) {
+        if (JSUtils.isEmpty(buttonCapture)) {
             buttonCapture = "确定";
         }
         commonDialog(message, callback,title,buttonCapture);
@@ -70,11 +70,11 @@ public class NativeUIFeatureImpl extends AbstractFeature {
     @JavascriptInterface
     public boolean confirm(String message,String callback, String title, String buttonCapture) {
         //title
-        if (JsUtils.isEmpty(title)) {
+        if (JSUtils.isEmpty(title)) {
             title = "确认";
         }
         //button
-        if (JsUtils.isEmpty(buttonCapture)) {//左-是，右-否
+        if (JSUtils.isEmpty(buttonCapture)) {//左-是，右-否
             //buttonCapture = "否,是";
             buttonCapture = "取消,确定";
         }
@@ -99,20 +99,21 @@ public class NativeUIFeatureImpl extends AbstractFeature {
 
         JSONArray jsonButton;
         if (StringUtils.isEmpty(buttonCapture)) {
-            jsonButton = JsonUtils.createJSONArray("确定");
+            jsonButton = JSONUtils.createJSONArray("确定");
         }else{
-            jsonButton = JsonUtils.createJSONArray(buttonCapture);
+            jsonButton = JSONUtils.createJSONArray(buttonCapture);
         }
-        final String btnPostiveCaption =  JsonUtils.getString(jsonButton, 0);
+        final String btnPostiveCaption =  JSONUtils.getString(jsonButton, 0);
         //第一个按钮
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, btnPostiveCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Toast.makeText(context, btnPostiveCaption , Toast.LENGTH_SHORT).show();
+                JSUtils.execCallback(var7, var8, "{index:0}", JSUtil.OK, true, false);
             }
         });
         //第二个按钮
-        final String btnNegativeCaption =  JsonUtils.getString(jsonButton, 1);
+        final String btnNegativeCaption =  JSONUtils.getString(jsonButton, 1);
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, btnNegativeCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -120,7 +121,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
             }
         });
         //第三个按钮
-        final String btnNeutralCaption =  JsonUtils.getString(jsonButton, 2);
+        final String btnNeutralCaption =  JSONUtils.getString(jsonButton, 2);
         alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, btnNeutralCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

@@ -4,7 +4,7 @@ package com.jeenms.app.util;
  * Created by zhangdy on 2017/3/27.
  */
 
-public class JsUtils {
+public class JSUtils {
     public static boolean isEmpty(final CharSequence cs) {
         return StringUtils.isEmpty(cs) || isUndefined(cs);
     }
