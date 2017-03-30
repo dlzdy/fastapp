@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by zhangdy on 2017/3/27.
  */
 
-public class JSONUtils {
+public class JSONUtils1 {
 
     /**
      * "abc"-->[abc]
@@ -19,17 +19,13 @@ public class JSONUtils {
         if(!value.startsWith("[")) {
             value = "[" + value;
         }
-
         if(!value.endsWith("]")) {
             value = value + "]";
         }
-
         JSONArray jsonArray = null;
-
         try {
             jsonArray = new JSONArray(value);
         } catch (JSONException e) {
-
         }
         return jsonArray;
     }
