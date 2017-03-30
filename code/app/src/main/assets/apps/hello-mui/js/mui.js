@@ -2737,10 +2737,10 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	//默认监听
 	$.plusReady(function() {
 		if ($.options.keyEventBind.backbutton) {
-			//plus.key.addEventListener('backbutton', __back, false);
+			plus.key.addEventListener('backbutton', __back, false);
 		}
 		if ($.options.keyEventBind.menubutton) {
-			//plus.key.addEventListener('menubutton', __menu, false);
+			plus.key.addEventListener('menubutton', __menu, false);
 		}
 	});
 	//处理按键监听事件

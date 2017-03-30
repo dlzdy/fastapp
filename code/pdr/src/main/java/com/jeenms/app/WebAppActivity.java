@@ -38,10 +38,10 @@ public class WebAppActivity extends AbstractActivity{
         setContentView(layout);
         //TODO 根据配置加载首页
         //webView.loadUrl("http://www.baidu.com");
-        //String index = "http://www.baidu.com";
-        //String index = "file:///android_asset/apps/hello-mui/index.html";
-        String index = "file:///android_asset/apps/hello-mui/examples/dialog.html";
-        //String index = "file:///android_asset/apps/hello-mui/examples/mytest.html";
+        String index = "http://www.baidu.com";
+        index = "file:///android_asset/apps/hello-mui/index.html";
+        //index = "file:///android_asset/apps/hello-mui/examples/dialog.html";
+        //index = "file:///android_asset/apps/hello-mui/examples/mytest.html";
         webView.loadUrl(index);
     }
 

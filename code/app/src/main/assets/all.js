@@ -35,6 +35,31 @@ var toString = function(obj){
 var plus = function(){
 
 };
+//Key管理设备按键事件
+plus.key = {
+//    keyEvent = {},
+//    keyEvent.backbutton = "back",
+//    keyEvent.menubutton = "menu",
+//    keyEvent.searchbutton = "search",
+//    keyEvent.volumeupbutton = "volumeup",
+//    keyEvent.volumedownbutton = "volumedown",
+//    keyEvent.keyup = "keyup",
+//    keyEvent.keydown = "keydown",
+//    keyEvent.longpressed = "longpressed",
+    addEventListener = function(o, r, a) {
+        function s(e) {
+            var t = {};
+            t.keycode = e.keyType,
+            t.keyCode = e.keyCode,
+            t.keyType = e.keyType,
+            r(t)
+        }
+    },
+    removeEventListener = function(o, r) {
+
+    }
+
+};
 
 //runtime
 plus.runtime = {
