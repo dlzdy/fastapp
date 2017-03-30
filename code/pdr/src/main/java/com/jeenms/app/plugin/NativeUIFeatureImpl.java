@@ -89,7 +89,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
      title: ( String ) 可选 提示对话框上显示的标题
      buttonCapture: ( String ) 必选 提示对话框上按钮显示的内容 ["确定"]
      */
-    private boolean commonDialog(String message, String callback, String title, String buttonCapture) {
+    private boolean commonDialog(String message, final String callback, String title, String buttonCapture) {
         //TODO　topActivity
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(message);
@@ -98,7 +98,7 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setCanceledOnTouchOutside(false);
 
         JSONArray jsonButton;
-        if (StringUtils.isEmpty(buttonCapture)) {
+        if (JSUtils.isEmpty(buttonCapture)) {
             jsonButton = JSONUtils.createJSONArray("确定");
         }else{
             jsonButton = JSONUtils.createJSONArray(buttonCapture);
@@ -108,8 +108,15 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, btnPostiveCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Toast.makeText(context, btnPostiveCaption , Toast.LENGTH_SHORT).show();
-                JSUtils.execCallback(var7, var8, "{index:0}", JSUtil.OK, true, false);
+                if (JSUtils.isEmpty(callback)){
+                    return;
+                }
+                String jsCallback =
+                        "(function() { "
+                                + "var callbackFun = " + callback + ";"
+                                + "callbackFun({index:0});"
+                                + "})()";
+                JSUtils.exeJavaScript(getWebView(), jsCallback);
             }
         });
         //第二个按钮
@@ -117,7 +124,15 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, btnNegativeCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Toast.makeText(context, btnNegativeCaption , Toast.LENGTH_SHORT).show();
+                if (JSUtils.isEmpty(callback)){
+                    return;
+                }
+                String jsCallback =
+                        "(function() { "
+                                + "var callbackFun = " + callback + ";"
+                                + "callbackFun({index:1});"
+                                + "})()";
+                JSUtils.exeJavaScript(getWebView(), jsCallback);
             }
         });
         //第三个按钮
@@ -125,7 +140,15 @@ public class NativeUIFeatureImpl extends AbstractFeature {
         alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, btnNeutralCaption, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Toast.makeText(context, btnNeutralCaption , Toast.LENGTH_SHORT).show();
+                if (JSUtils.isEmpty(callback)){
+                    return;
+                }
+                String jsCallback =
+                        "(function() { "
+                                + "var callbackFun = " + callback + ";"
+                                + "callbackFun({index:2});"
+                                + "})()";
+                JSUtils.exeJavaScript(getWebView(), jsCallback);
             }
         });
 

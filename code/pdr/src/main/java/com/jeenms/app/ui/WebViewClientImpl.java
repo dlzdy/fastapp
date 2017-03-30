@@ -5,6 +5,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.jeenms.app.util.FileUtils;
+import com.jeenms.app.util.JSUtils;
 
 /**
  * Created by zhangdy on 2017/3/21.
@@ -35,7 +36,7 @@ public class WebViewClientImpl extends WebViewClient {
 
     private void exePlusInit(WebView view) {
         String jsPlusContent = new String(FileUtils.getAssetFileContent(view.getContext(),sRuntimeJsPath));
-        loadUrl(view, "javascript:" + jsPlusContent);
+        JSUtils.exeJavaScript(view, jsPlusContent);
     }
 
     /**
@@ -50,7 +51,7 @@ public class WebViewClientImpl extends WebViewClient {
         jsplusready.append("})();");//end js
         //System.out.println(js_fun_plusready.toString());
 
-        loadUrl(view, "javascript:" + jsplusready.toString());
+        JSUtils.exeJavaScript(view, jsplusready.toString());
 
 //        Handler mHandler = new Handler();
 //        mHandler.post(new Runnable() {
@@ -65,19 +66,6 @@ public class WebViewClientImpl extends WebViewClient {
 //        });
     }
 
-    public void loadUrl(final WebView view, String url)
-    {
-        if (url.startsWith("javascript:")){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-                view.evaluateJavascript(url, null);
-            }else{
-                view.loadUrl(url);
-            }
-            return;
-        }else{
-            view.loadUrl(url);
-        }
-    }
 
 
 }

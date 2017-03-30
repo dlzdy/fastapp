@@ -1,6 +1,41 @@
+/**
+* 判断是函数， true,false
+*/
+var isFunc = function(obj){
+    //alert("isFunc obj--> " + obj);
+    //alert("isFunc typeof obj -->" + typeof obj );
+    return typeof obj === 'function';
+}
+/**
+* 判断是json格式, true ,false
+*/
+var isJson = function(obj){
+    return  (typeof obj == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length);
+}
+
+/**
+* 方法转为字符串
+*/
+var toString = function(obj){
+    //alert("toString obj--> " + obj);
+    if (obj === null || obj === undefined || obj === ''){//空
+        return null;
+    }
+    if (isFunc(obj)){//函数
+        return obj.toString();
+    }
+    if (isJson(obj)){//isJson
+        return JSON.stringify(obj);
+    }
+    return obj;
+};
+
+
+
 var plus = function(){
 
 };
+
 //runtime
 plus.runtime = {
     test: function (){
@@ -16,13 +51,13 @@ plus.nativeUI = {
         return window.nativeUI.test();
     },
     alert: function (message, callback, title, btnArray){
-        return window.nativeUI.confirm(message, callback, title, JSON.stringify(btnArray));
+        return window.nativeUI.alert(message, toString(callback), title, toString(btnArray));
     },
     confirm: function (message, callback, title, btnArray){
-        return window.nativeUI.confirm(message, callback, title, JSON.stringify(btnArray));
+        return window.nativeUI.confirm(message, toString(callback), title, toString(btnArray));
     },
     toast: function (message,options){
-        return window.nativeUI.toast(message,JSON.stringify(options));
+        return window.nativeUI.toast(message, toString(options));
     }
 }
 
