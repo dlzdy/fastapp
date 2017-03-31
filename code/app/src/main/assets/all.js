@@ -46,18 +46,18 @@ plus.key = {
 //    keyEvent.keyup = "keyup",
 //    keyEvent.keydown = "keydown",
 //    keyEvent.longpressed = "longpressed",
-    addEventListener = function(o, r, a) {
+    addEventListener: function(o, r, a) {
         function s(e) {
             var t = {};
             t.keycode = e.keyType,
             t.keyCode = e.keyCode,
             t.keyType = e.keyType,
-            r(t)
+            r(t);
         }
     },
-    removeEventListener = function(o, r) {
+    removeEventListener: function(o, r) {
 
-    }
+    },
 
 };
 
