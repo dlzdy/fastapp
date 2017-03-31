@@ -4651,6 +4651,7 @@ function(e) {
         return window.location.href
     }
     function n(e, n, r, a) {
+		alert("all.js(4653)" + "new VebView");
         if (this.__view_array__ = [], i.NView.prototype.constructor.apply(this, [o]), this.id = null, n && n.name && (this.id = n.name), a) for (var s in a) this[s] = a[s]; ! this.id && e && (this.id = n.name = e),
         r || (i.__pushWindow__(this), i.exec(this, o, [e, n, this.__callback_id__, t(), a]))
     }
