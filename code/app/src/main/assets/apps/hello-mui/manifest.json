@@ -174,7 +174,8 @@
 					"list.html"
 				],
 				"refer": [
-					"index-menu.html"
+					"index-menu.html",
+					"examples/mytest.html"
 				],
 				"priority": 0
 			},
@@ -1015,6 +1016,15 @@
 					"css/app.css",
 					"css/mui.min.css",
 					"js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/mytest.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

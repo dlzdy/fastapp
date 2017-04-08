@@ -16,4 +16,14 @@ public class RuntimeFeatureImpl extends AbstractFeature {
     public RuntimeFeatureImpl(WebView webView) {
         super(webView);
     }
+
+    /**
+     * 当前应用的APPID
+     * @return
+     */
+    @JavascriptInterface
+    public String appid(){
+        //TODO
+        return "test appid";
+    }
 }

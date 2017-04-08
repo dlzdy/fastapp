@@ -32,18 +32,18 @@ public class JSUtils {
     /**
      * 执行js
      * @param webView
-     * @param jsContent
+     * @param js
      */
-    public static void exeJavaScript(final WebView webView, final String jsContent) {
+    public static void exeJavaScript(final WebView webView, final String js) {
         //Fixed: all WebView methods must be called on the same thread
         webView.post(new Runnable() {
             @Override
             public void run() {
-                String tmpJsContent = "javascript:" + jsContent;
+                String tmpJs = "javascript:" + js;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    webView.evaluateJavascript(tmpJsContent, null);
+                    webView.evaluateJavascript(tmpJs, null);
                 } else {
-                    webView.loadUrl(tmpJsContent);
+                    webView.loadUrl(tmpJs);
                 }
             }
         });

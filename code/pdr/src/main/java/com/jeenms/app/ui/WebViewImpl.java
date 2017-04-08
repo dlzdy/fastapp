@@ -4,11 +4,10 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.os.Handler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.jeenms.app.commons.IWebview;
+import com.jeenms.app.commons.IWebView;
 import com.jeenms.app.plugin.NativeUIFeatureImpl;
 import com.jeenms.app.plugin.RuntimeFeatureImpl;
 import com.jeenms.app.plugin.WebViewFeatureImpl;
@@ -16,7 +15,7 @@ import com.jeenms.app.plugin.WebViewFeatureImpl;
 /**
  * Created by zhangdy on 2017/3/21.
  */
-public class WebViewImpl extends WebView  implements IWebview {
+public class WebViewImpl extends WebView  implements IWebView {
     String mUserAgent = null;
     static final String UserAgentExtInfo = " Html5Plus/1.0";
 

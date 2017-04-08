@@ -4,6 +4,7 @@ import android.os.Build;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.jeenms.app.commons.constant.AbsoluteConst;
 import com.jeenms.app.util.FileUtils;
 import com.jeenms.app.util.JSUtils;
 
@@ -29,9 +30,10 @@ public class WebViewClientImpl extends WebViewClient {
         super.onPageFinished(view, url);
         //执行all.js初始化plus等变量
         exePlusInit(view);
-
         //通知webview plus is ready
         onPlusReadyEvent(view);
+        //触发事件
+        //this.dispatchFrameViewEvents(AbsoluteConst.EVENTS_TITLE_UPDATE, view.getTitle());
     }
 
     private void exePlusInit(WebView view) {

@@ -1,0 +1,21 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/update.js"
+		],
+		"refer": [
+			"index-menu.html",
+			"examples/mytest.html"
+		]
+	},
+	"examples/mytest.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	}
+}

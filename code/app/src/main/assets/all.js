@@ -1,23 +1,20 @@
 /**
 * 判断是函数， true,false
 */
-var isFunc = function(obj){
-    //alert("isFunc obj--> " + obj);
-    //alert("isFunc typeof obj -->" + typeof obj );
+isFunc = function(obj){
     return typeof obj === 'function';
 }
 /**
 * 判断是json格式, true ,false
 */
-var isJson = function(obj){
+isJson = function(obj){
     return  (typeof obj == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length);
 }
 
 /**
 * 方法转为字符串
 */
-var toString = function(obj){
-    //alert("toString obj--> " + obj);
+toString = function(obj){
     if (obj === null || obj === undefined || obj === ''){//空
         return null;
     }
@@ -29,36 +26,43 @@ var toString = function(obj){
     }
     return obj;
 };
-
-
-
-var plus = function(){
+//WebView
+WebView = function(url, id, styles, extras){
+    this.url = url;
+    this.id = id;
+    this.styles = styles;
+    this.extras = extras;
+    //
+    this.addEventListener = function(event, listener, capture ) {
+        plus.webview.addEventListener(event, listener, capture);
+    };
+    //
+    this.removeEventListener = function(event, listener) {
+        plus.webview.removeEventListener(event, listener);
+    };
+};
+//ShapeBase.prototype={
+//show:function()
+//{
+//alert("ShapeBase show");
+//},
+//init:function() {
+//alert("ShapeBase init");
+//}
+//};
+plus = function(){
 
 };
+
+
 //Key管理设备按键事件
 plus.key = {
-//    keyEvent = {},
-//    keyEvent.backbutton = "back",
-//    keyEvent.menubutton = "menu",
-//    keyEvent.searchbutton = "search",
-//    keyEvent.volumeupbutton = "volumeup",
-//    keyEvent.volumedownbutton = "volumedown",
-//    keyEvent.keyup = "keyup",
-//    keyEvent.keydown = "keydown",
-//    keyEvent.longpressed = "longpressed",
-    addEventListener: function(o, r, a) {
-        function s(e) {
-            var t = {};
-            t.keycode = e.keyType,
-            t.keyCode = e.keyCode,
-            t.keyType = e.keyType,
-            r(t);
-        }
+    addEventListener: function(event, listener, capture){
+        window.webview.addEventListener(event, listener, capture);
     },
-    removeEventListener: function(o, r) {
-
+    removeEventListener: function(event, listener){
+        window.webview.removeEventListener(event, listener);
     },
-
 };
 
 //runtime
@@ -68,6 +72,9 @@ plus.runtime = {
     },
     quit: function (){
         return window.runtime.quit();
+    },
+    appid: function(){
+        return window.runtime.appid();
     }
 };
 //nativeUI
@@ -86,12 +93,38 @@ plus.nativeUI = {
     }
 }
 
-//webview
 plus.webview = {
-    test: function (){
+    //
+    test: function(){
         return window.webview.test();
     },
-    currentWebview: function (){
+    create: function(url, id, style, extras){//return plus.webview
+        var nativeResult = window.webview.create(url, id, style, extras);
+        var jsonObj = JSON.parse(nativeResult);
+        var webview = new WebView(jsonObj.url, jsonObj.id);
+        return webview;
+    },
+    addEventListener: function(event, listener, capture){
+        window.webview.addEventListener(event, listener, capture);
+    },
+    removeEventListener: function(event, listener){
+        window.webview.removeEventListener(event, listener);
+    },
+    all: function(){
+        var nativeResult = window.webview.all();
+        return nativeRsult;
+    },
+    currentWebview: function(){ //return  plus.webview
         return window.webview.currentWebview();
     },
+    getWebviewById: function(id){//return plus.webview
+        return window.webview.getWebviewById(id);
+    },
+    evalJS: function(js){
+        return window.webview.evalJS(js);
+    },
+    show: function(id, aniShow, duration, showedCB, extras){
+        return window.webview.show(id, aniShow, duration, showedCB, extras);
+    },
+
 }
