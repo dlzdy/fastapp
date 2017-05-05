@@ -53,4 +53,14 @@ public class StringUtils {
     public static  boolean isUndefined(final CharSequence cs){
         return ("undefined".equals(cs));
     }
+
+    public static boolean equals(String cs1, String cs2) {
+        if (cs1 == cs2) {
+            return true;
+        }
+        if (cs1 == null || cs2 == null) {
+            return false;
+        }
+        return cs1.equals(cs2);
+    }
 }

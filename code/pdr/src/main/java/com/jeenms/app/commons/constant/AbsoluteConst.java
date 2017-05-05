@@ -5,5 +5,6 @@ package com.jeenms.app.commons.constant;
  */
 
 public class AbsoluteConst {
+    public static final String ID_INDEX = "index";//首页ID
     public static final String EVENTS_TITLE_UPDATE = "titleUpdate";
 }

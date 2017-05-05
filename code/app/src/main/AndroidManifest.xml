@@ -45,13 +45,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.jeenms.app.WebAppActivity">
+        <activity android:name="com.jeenms.app.WebAppActivity" android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.jeenms.app.WebViewActivity" android:launchMode="standard">
+        </activity>
+
     </application>
 
 </manifest>

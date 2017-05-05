@@ -15,7 +15,7 @@ import com.jeenms.app.util.JSUtils;
 public class WebViewClientImpl extends WebViewClient {
 
     private static final String TAG = "WebViewClientImpl";
-    private static final String sRuntimeJsPath = "all.js";
+    private static final String sRuntimeJsPath = "appAll.js";
     /*
      * 覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
      */
@@ -34,6 +34,7 @@ public class WebViewClientImpl extends WebViewClient {
         onPlusReadyEvent(view);
         //触发事件
         //this.dispatchFrameViewEvents(AbsoluteConst.EVENTS_TITLE_UPDATE, view.getTitle());
+
     }
 
     private void exePlusInit(WebView view) {

@@ -1,6 +1,7 @@
 package com.jeenms.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.webkit.JavascriptInterface;
@@ -13,8 +14,8 @@ import com.jeenms.app.ui.WebViewImpl;
 
 public class WebAppActivity extends AbstractActivity{
 
-    private WebView webView;
-    private LinearLayout layout;
+//    private WebView webView;
+//    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +33,19 @@ public class WebAppActivity extends AbstractActivity{
     }
 
     public void initView() {
-        webView = new WebViewImpl(this);
-        layout = new LinearLayout( this );    // 变量layout是该Activity的成员变量（private LinearLayout layout）
-        layout.addView(webView);
-        setContentView(layout);
+        //WebViewActivity activity = new WebViewActivity();
         //TODO 根据配置加载首页
         //webView.loadUrl("http://www.baidu.com");
         String index = "http://www.baidu.com";
         index = "file:///android_asset/apps/hello-mui/index.html";
         //index = "file:///android_asset/apps/hello-mui/examples/dialog.html";
         //index = "file:///android_asset/apps/hello-mui/examples/mytest.html";
-        webView.loadUrl(index);
+        //activity.loadUrl(index);
+        Intent webviewIntent = new Intent(this, WebViewActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("url", index);
+        bundle.putString("id", "index");
+        webviewIntent.putExtras(bundle);
+        startActivity(webviewIntent);
     }
-
-    /**
-     * 返回按键处理
-     */
-    @Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {//关闭
-            finish();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
  }

@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.jeenms.app.commons.constant.AbsoluteConst;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -16,7 +19,7 @@ public class RuningAcitvityUtils {
     /**
      * <activity.getComponentName().getClassName(), activity>
      */
-    private static HashMap<String, Activity> runingActivitys = new HashMap();
+    private static Map<String, Activity> runingActivitys = new HashMap();
 
 
     /**
@@ -28,9 +31,29 @@ public class RuningAcitvityUtils {
         if(!runingActivitys.containsKey(key)) {
             runingActivitys.put(key, activity);
         }
-
     }
 
+    /**
+     * 缓存
+     * @param key
+     * @param activity
+     */
+    public static void put(String key, Activity activity) {
+        if(!runingActivitys.containsKey(key)) {
+            runingActivitys.put(key, activity);
+        }
+    }
+    public static Activity get(String key) {
+        return runingActivitys.get(key);
+    }
+
+    /**
+     * 获得首页
+     * @return
+     */
+    public static Activity getIndexActivity() {
+        return runingActivitys.get(AbsoluteConst.ID_INDEX);
+    }
     /**
      * 删除activity
      * @param key
