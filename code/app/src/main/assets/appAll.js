@@ -40,6 +40,12 @@ WebView = function(url, id, styles, extras){
     this.removeEventListener = function(event, listener) {
         plus.webview.removeEventListener(event, listener);
     };
+    this.evalJS =  function(js){
+         plus.webview.evalJS(js);
+    };
+    this.show = function(id, aniShow, duration, showedCB, extras){
+        plus.webview.show(id, aniShow, duration, showedCB, extras);
+    };
 };
 //ShapeBase.prototype={
 //show:function()

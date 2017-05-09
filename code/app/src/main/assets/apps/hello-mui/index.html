@@ -749,13 +749,17 @@
 					
 					
 					var webview = plus.webview.create(this.href,id,webview_style,extras);
+					webview.show(aniShow,300);
 					//console.log(webview);
 					//alert("index.html 753-->" + webview);
+					/*
 					webview.addEventListener("titleUpdate",function () {
 						setTimeout(function () {
 							webview.show(aniShow,300);
 						},100);
 					});
+					*/
+					
 				}
 			});
 			/**

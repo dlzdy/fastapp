@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.jeenms.app.WebAppActivity;
 import com.jeenms.app.commons.constant.AbsoluteConst;
 
 import java.util.HashMap;
@@ -51,8 +52,8 @@ public class RuningAcitvityUtils {
      * 获得首页
      * @return
      */
-    public static Activity getIndexActivity() {
-        return runingActivitys.get(AbsoluteConst.ID_INDEX);
+    public static WebAppActivity getIndexActivity() {
+        return (WebAppActivity)runingActivitys.get(AbsoluteConst.ID_INDEX);
     }
     /**
      * 删除activity
