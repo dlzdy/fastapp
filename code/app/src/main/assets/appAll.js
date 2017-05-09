@@ -47,8 +47,17 @@ WebView = function(url, id, styles, extras){
         window.webview.show(this.id, aniShow, duration, showedCB, extras);
     };
     this.parent = function() {
-         window.webview.parent();
+        var nativeResult = window.webview.parent();
+        if (nativeResult === null || nativeResult === undefined || nativeResult === ''){//空
+            return null;
+        }
+        var jsonObj = JSON.parse(nativeResult);
+        var webview = new WebView(jsonObj.url, jsonObj.id);
+        return webview;
     };
+    this.canBack = function(callback) {
+        window.webview.canBack(toString(callback));
+    }
 };
 
 plus = function(){
@@ -116,19 +125,19 @@ plus.webview = {
         return nativeRsult;
     },
     currentWebview: function(){ //return  plus.webview
-        return window.webview.currentWebview();
+        var nativeResult = window.webview.currentWebview();
+        if (nativeResult === null || nativeResult === undefined || nativeResult === ''){//空
+            return null;
+        }
+        var jsonObj = JSON.parse(nativeResult);
+        var webview = new WebView(jsonObj.url, jsonObj.id);
+        return webview;
     },
     getWebviewById: function(id){//return plus.webview
         return window.webview.getWebviewById(id);
     },
-    evalJS: function(js){
-        return window.webview.evalJS(js);
-    },
     show: function(id, aniShow, duration, showedCB, extras){
         return window.webview.show(id, aniShow, duration, showedCB, extras);
-    },
-    parent: function(){
-        return window.webview.parent();
     },
 
 }

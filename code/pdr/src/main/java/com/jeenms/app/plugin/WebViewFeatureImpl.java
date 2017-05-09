@@ -64,7 +64,8 @@ public class WebViewFeatureImpl extends AbstractFeature {
      */
     @JavascriptInterface
     public String currentWebview() {
-        return JSONUtils.toJSON(currentWebViewObj);
+        String aa =  JSONUtils.toJSON(currentWebViewObj);
+        return aa;
     }
 
     /**
@@ -124,21 +125,6 @@ public class WebViewFeatureImpl extends AbstractFeature {
         }
     }
 
-//    public void show_old(String id, String aniShow, int duration, String showedCB, String extras) {
-//        Log.i(TAG, id);
-//        currentWebView = webViewObjectMap.get(id);//设置当前webview
-//        //设置参数
-//        Bundle bundle = new Bundle();
-//        bundle.putString("url", currentWebView.getUrl());
-//        bundle.putString("id", currentWebView.getId());
-//        bundle.putString("extras", currentWebView.getExtra());
-//        bundle.putString("styltes", currentWebView.getStyles());
-//        //切换页面
-//        Activity mainActivity = RuningAcitvityUtils.getIndexActivity();
-//        Intent webviewIntent = new Intent(mainActivity, WebViewActivity.class);
-//        webviewIntent.putExtras(bundle);
-//        mainActivity.startActivity(webviewIntent);
-//    }
     /**
      * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.show
      *
@@ -210,6 +196,35 @@ public class WebViewFeatureImpl extends AbstractFeature {
     public String parent() {
         WebViewObject webViewObject = null;
         return JSONUtils.toJSON(webViewObject);
+    };
+
+    /**
+     * 查询Webview窗口是否可后退
+     */
+    @JavascriptInterface
+    public void canBack(final String callBack) {
+        final WebAppActivity mainActivity = RuningAcitvityUtils.getIndexActivity();
+        Log.i(TAG, callBack);
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                boolean canBack = webView.canGoBack();
+                String jsCallback =
+                        "(function() { "
+                                + "var callbackFun = " + callBack + ";"
+                                + "var event = {};"
+                                + "event.canBack = "+ canBack + ";"
+                                + "callbackFun(event);"
+                                + "})()";
+                JSUtils.exeJavaScript(getWebView(), jsCallback);
+            }
+        });
+
+//        var canBack = event.canBack;
+//        var canForward = event.canForward
+        //Map<String,Boolean>
+
+
     };
 
     @JavascriptInterface

@@ -137,6 +137,9 @@ public class JSONUtils {
      * @return
      */
     public static String toJSON(Object obj) {
+        if (obj == null){
+            return null;
+        }
         return JSON.toJSON(obj) + "";
     }
 

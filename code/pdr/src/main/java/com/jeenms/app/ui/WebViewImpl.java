@@ -90,8 +90,4 @@ public class WebViewImpl extends WebView  implements IWebView {
     public Activity getActivity() {
         return null;
     }
-
-    public String toString(){
-        return this.getUrl();
-    }
 }

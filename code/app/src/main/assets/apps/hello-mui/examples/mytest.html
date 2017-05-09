@@ -34,7 +34,11 @@
 				plus.nativeUI.alert("欢迎使用mui", null, "警告信息", null);
 			}
 			function plusConfirm(){
-				plus.nativeUI.confirm("确认删除吗", null, "确认", "确认,取消,应用");
+				plus.nativeUI.confirm("确认删除吗", function(e){
+					console.log(e);
+					alert(e.index);
+				}
+				, "确认", "确认,取消,应用");
 			}
 			/*
 			function plusready(){
