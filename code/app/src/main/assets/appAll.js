@@ -38,24 +38,19 @@ WebView = function(url, id, styles, extras){
     };
     //
     this.removeEventListener = function(event, listener) {
-        plus.webview.removeEventListener(event, listener);
+         window.webview.removeEventListener(event, listener);
     };
-    this.evalJS =  function(js){
-         plus.webview.evalJS(js);
+    this.evalJS = function(js) {
+         window.webview.evalJS(js);
     };
-    this.show = function(id, aniShow, duration, showedCB, extras){
-        plus.webview.show(id, aniShow, duration, showedCB, extras);
+    this.show = function(aniShow, duration, showedCB, extras){
+        window.webview.show(this.id, aniShow, duration, showedCB, extras);
+    };
+    this.parent = function() {
+         window.webview.parent();
     };
 };
-//ShapeBase.prototype={
-//show:function()
-//{
-//alert("ShapeBase show");
-//},
-//init:function() {
-//alert("ShapeBase init");
-//}
-//};
+
 plus = function(){
 
 };
@@ -131,6 +126,9 @@ plus.webview = {
     },
     show: function(id, aniShow, duration, showedCB, extras){
         return window.webview.show(id, aniShow, duration, showedCB, extras);
+    },
+    parent: function(){
+        return window.webview.parent();
     },
 
 }

@@ -3,6 +3,8 @@ package com.jeenms.app.commons;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.jeenms.app.ui.WebViewImpl;
+
 public abstract class AbstractActivity extends Activity implements IActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +16,7 @@ public abstract class AbstractActivity extends Activity implements IActivity {
 		// 事件
 		initEvent();
 	}
+
 
 
 }

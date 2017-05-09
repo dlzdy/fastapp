@@ -18,6 +18,7 @@ import com.jeenms.app.util.JSUtils;
 import com.jeenms.app.util.RuningAcitvityUtils;
 import com.jeenms.app.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -35,11 +36,11 @@ public class WebViewFeatureImpl extends AbstractFeature {
     private static String TAG = "WebViewFeatureImpl";
     //<id,WebViewObject>
     private static Map<String, WebViewObject> webViewObjectMap = new HashMap();
-    private static Map<String, WebView> webViewMap = new HashMap();
-
-    WebAppActivity mainActivity = RuningAcitvityUtils.getIndexActivity();
+    //<id,WebViewImpl>
+    private static Map<String, WebViewImpl> webViewMap = new HashMap();
 
     private static WebViewObject currentWebViewObj;
+
     public WebViewFeatureImpl(WebView webView) {
         super(webView);
     }
@@ -148,17 +149,25 @@ public class WebViewFeatureImpl extends AbstractFeature {
      * @param extras
      */
     @JavascriptInterface
-    public void show(String id, String aniShow, int duration, String showedCB, String extras) {
+    public void show(final String id, String aniShow, int duration, String showedCB, String extras) {
         Log.i(TAG, id);
-        WebAppActivity mainActivity = RuningAcitvityUtils.getIndexActivity();
-        currentWebViewObj = webViewObjectMap.get(id);//设置当前webview
-        WebView webView = webViewMap.get(id);
-        if (webView == null){
-            webView = new WebViewImpl(mainActivity);
-            webView.loadUrl(currentWebViewObj.getUrl());
-        }
-        mainActivity.setWebView(webView);
-        webView.setVisibility(View.VISIBLE);
+        final WebAppActivity mainActivity = RuningAcitvityUtils.getIndexActivity();
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                currentWebViewObj = webViewObjectMap.get(id);//设置当前webview
+                WebViewImpl webViewImpl = webViewMap.get(id);
+                if (webViewImpl == null){
+                    webViewImpl = new WebViewImpl(mainActivity);
+                    webViewImpl.loadUrl(currentWebViewObj.getUrl());
+                }
+                //mainActivity.getViewGroup().addView(webViewImpl);
+                webViewImpl.setVisibility(View.VISIBLE);
+                mainActivity.addWebView(webViewImpl);
+                mainActivity.setWebView(webViewImpl);
+
+            }
+        });
     }
 
     /**
@@ -170,20 +179,42 @@ public class WebViewFeatureImpl extends AbstractFeature {
      */
     @JavascriptInterface
     public void close(String id,String aniClose, int duration,String extras) {
+        hide(id, aniClose, duration,extras);
+        //删除缓存
+        webViewObjectMap.remove(id);
+        webViewMap.remove(id);
+    }
+
+    /**
+     * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.hide
+     * @param id
+     * @param aniHide
+     * @param duration
+     * @param extras
+     */
+    @JavascriptInterface
+    public void hide(String id,String aniHide, int duration,String extras) {
         Log.i(TAG, id);
         currentWebViewObj = webViewObjectMap.get(id);//设置当前webview
-        WebView webView = webViewMap.get(id);
-        if (webView == null){
+        WebViewImpl currentWebView = webViewMap.get(id);
+        if (currentWebView == null){
             return;
         }
-        webView.setVisibility(View.GONE);
-        webView = null;
-        mainActivity.setWebView(webView);
+        final WebAppActivity mainActivity = RuningAcitvityUtils.getIndexActivity();
+        currentWebView.setVisibility(View.GONE);
+        mainActivity.removeWebView(currentWebView);
+        //显示top
+        mainActivity.showLastWebView();
     }
+    @JavascriptInterface
+    public String parent() {
+        WebViewObject webViewObject = null;
+        return JSONUtils.toJSON(webViewObject);
+    };
+
     @JavascriptInterface
     public void function(String event, String listener) {
         //TODO
-    }
+    };
 
-    ;
 }
